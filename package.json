@@ -1,0 +1,24 @@
+{
+  "author": "Karl Düüna <dead.already@itdragons.com>",
+  "name": "ssl-keychain",
+  "description": "OpenSSL Keychain and Key generation module",
+  "version": "0.0.1",
+  "private":false,
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:DeadAlready/node-ssl-keychain.git"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "mkdirp": ">=0.3.3",
+    "rimraf": ">=2.0.2",
+    "foldermap":">=0.0.3"
+  },
+  "devDependencies":{
+    "vows":"0.6.x"
+  },
+  "optionalDependencies": {},
+  "engines": {
+    "node": ">=0.8.0"
+  }
+}
