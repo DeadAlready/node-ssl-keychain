@@ -126,7 +126,7 @@ function deepEqualWithDiff(a, e, names){
 }
 
 var keyChain = require('../index').createKeyChain({root:process.cwd() + path.sep + 'test'});
-var keyChainO = require('../index').createKeyChain({
+var options = {
   root:process.cwd() + path.sep + 'test',
   ns:[
     {
@@ -167,11 +167,14 @@ var keyChainO = require('../index').createKeyChain({
       name: 'testA'
     }
   ]
-});
+}
+var keyChainO = require('../index').createKeyChain(options);
+var keyChainC;
 
 var map = foldermap.mapTreeSync(process.cwd()+path.sep+'test'+path.sep+'certs');
 map = enumerableClone(map);
 delete map['incoming'];
+
 // Create a Test Suite
 vows.describe('SSL-KeyChain').addBatch({
   'KeyGen':{
@@ -268,6 +271,35 @@ vows.describe('SSL-KeyChain').addBatch({
     'in added':function(err, map){
       assert.isObject(keyChainO.added[map._base + '.csr']);
       assert.isObject(keyChainO.added[map._base + '.crt']);
+    }
+  }
+}).addBatch({
+  'KeyChain synchronous creation':{
+    topic:function(){
+      options.sync = true;
+      keyChainC = require('../index').createKeyChain(options);
+      console.log(keyChainC.certs);
+      this.callback(null, keyChainC)
+    },
+    'has main keys':function(keyChainC){
+      assert.isObject(keyChainC.certs.root.key);
+      assert.isObject(keyChainC.certs.root.crt);
+    },
+    'has ca':function(keyChainC){
+      assert.isObject(keyChainC.certs.ca);
+      assert.isObject(keyChainC.certs.ca.key);
+      assert.isObject(keyChainC.certs.ca.crt);
+    },
+    'has sec':function(keyChainC){
+      assert.isObject(keyChainC.certs.sec);
+      assert.isObject(keyChainC.certs.sec.key);
+      assert.isObject(keyChainC.certs.sec.crt);
+      assert.isObject(keyChainC.certs.sec.csr);
+    },
+    'has testA':function(keyChainC){
+      assert.isObject(keyChainC.certs.testA);
+      assert.isObject(keyChainC.certs.testA.key);
+      assert.isObject(keyChainC.certs.testA.csr);
     }
   }
 }).run({reporter:spec});
