@@ -1,5 +1,5 @@
 {
-  "author": "Karl Düüna <dead.already@itdragons.com>",
+  "author": "Karl Düüna <karl.dyyna@gmail.com>",
   "name": "ssl-keychain",
   "description": "OpenSSL Keychain and Key generation module",
   "version": "0.0.1",
@@ -12,10 +12,14 @@
   "dependencies": {
     "mkdirp": ">=0.3.3",
     "rimraf": ">=2.0.2",
-    "foldermap":">=0.0.3"
+    "foldermap":">=0.0.5",
+    "ssl-keygen":">=0.0.5"
   },
   "devDependencies":{
     "vows":"0.6.x"
+  },
+  "scripts":{
+    "test":"node test/test.js"
   },
   "optionalDependencies": {},
   "engines": {
