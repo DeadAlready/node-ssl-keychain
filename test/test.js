@@ -197,14 +197,6 @@ vows.describe('SSL-KeyChain').addBatch({
     },
     'has map':function(){
       assert.isObject(keyChain.certs);
-    },
-    'map is correct':function(){
-      var temp = enumerableClone(keyChain.certs);
-      var dif = deepEqualWithDiff(map, temp);
-      if(dif !== true){
-        console.log(dif);
-      }
-      assert.strictEqual(dif, true);
     }
   }
 }).addBatch({
@@ -278,17 +270,24 @@ vows.describe('SSL-KeyChain').addBatch({
     topic:function(){
       options.sync = true;
       keyChainC = require('../index').createKeyChain(options);
-      console.log(keyChainC.certs);
       this.callback(null, keyChainC)
     },
     'has main keys':function(keyChainC){
       assert.isObject(keyChainC.certs.root.key);
       assert.isObject(keyChainC.certs.root.crt);
     },
+    'main easy methods':function(keyChainC){
+      assert.isString(keyChainC.rootKey);
+      assert.isString(keyChainC.rootCrt);
+    },
     'has ca':function(keyChainC){
       assert.isObject(keyChainC.certs.ca);
       assert.isObject(keyChainC.certs.ca.key);
       assert.isObject(keyChainC.certs.ca.crt);
+    },
+    'ca easy methods':function(keyChainC){
+      assert.isString(keyChainC.caKey);
+      assert.isString(keyChainC.caCrt);
     },
     'has sec':function(keyChainC){
       assert.isObject(keyChainC.certs.sec);
@@ -296,10 +295,19 @@ vows.describe('SSL-KeyChain').addBatch({
       assert.isObject(keyChainC.certs.sec.crt);
       assert.isObject(keyChainC.certs.sec.csr);
     },
+    'sec easy methods':function(keyChainC){
+      assert.isString(keyChainC.secKey);
+      assert.isString(keyChainC.secCsr);
+      assert.isString(keyChainC.secCrt);
+    },
     'has testA':function(keyChainC){
       assert.isObject(keyChainC.certs.testA);
       assert.isObject(keyChainC.certs.testA.key);
       assert.isObject(keyChainC.certs.testA.csr);
+    },
+    'testA easy methods':function(keyChainC){
+      assert.isString(keyChainC.testAKey);
+      assert.isString(keyChainC.testACsr);
     }
   }
 }).run({reporter:spec});
