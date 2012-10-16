@@ -51,74 +51,58 @@ The following functions are exported to the KeyChain object
 
 ### init
 
-/**
- * Function for initializing the KeyChain
- * 
+Function for initializing the KeyChain
+
  * @param {Boolean} [dontCreate=false] whether to stop creation of keys
  * @param {Boolean} [noErrors=false] whether to supress errors
  * @param {Function} callback
- */
 
 ### mapFolderSync
 
-/**
- * Function for mapping existing keys in synchronously
- */
+Function for mapping existing keys synchronously
 
 ### createMeta
 
-/**
- * Function for creating easy access methods to configured certs
- */
+Function for creating easy access methods to configured certs
 
 ### checkAllFiles
 
-/**
- * Function for checking all definitions in the KeyChain
- * 
+Function for checking all definitions in the KeyChain
+
  * @param {Boolean} [dontCreate=false] whether to stop creation of keys
  * @param {Boolean} [noErrors=false] whether to supress errors
  * @param {Function} callback
- */
 
 ### clearFolders
 
-/**
- * Function for deleting marked folders
- * 
+Function for deleting marked folders
+
  * @param {Function} callback
- */
 
 ### createKeyObject
 
-/**
- * Function for creating key object
- * 
+Function for creating key object
+
  * @param {Object} info certInfo object
  * @param {Function} callback
- */
 
 ### receiveFile
 
-/**
- * Function for writing a file into filesystem
- * 
+Function for writing a file into filesystem
+
  * @param {String}  name name of the file
  * @param {String}  file file contents
  * @param {String}  [info='incoming'] the name of certInfo object to add under
  * @param {Boolean} [force=false] whether to overwrite if exists
  * @param {Function}
- */
 
 ### signRequest
 
-/**
- * Function for receiving a csr and signing it
- * 
+Function for receiving a csr and signing it
+
  * @param {String}  utf8 string with csr contents
  * @param {String|Object}  ca name of ca or ca object to use
  * @param {Function} callback
- */
 
 ## License
 
