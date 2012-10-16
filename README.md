@@ -49,22 +49,6 @@ There are two ways of specifying the options:
 
 The following functions are exported to the KeyChain object
 
-### init
-
-Function for initializing the KeyChain
-
- * @param {Boolean} [dontCreate=false] whether to stop creation of keys
- * @param {Boolean} [noErrors=false] whether to supress errors
- * @param {Function} callback
-
-### mapFolderSync
-
-Function for mapping existing keys synchronously
-
-### createMeta
-
-Function for creating easy access methods to configured certs
-
 ### checkAllFiles
 
 Function for checking all definitions in the KeyChain
@@ -85,6 +69,22 @@ Function for creating key object
 
  * @param {Object} info certInfo object
  * @param {Function} callback
+
+### createMeta
+
+Function for creating easy access methods to configured certs
+
+### init
+
+Function for initializing the KeyChain
+
+ * @param {Boolean} [dontCreate=false] whether to stop creation of keys
+ * @param {Boolean} [noErrors=false] whether to supress errors
+ * @param {Function} callback
+
+### mapFolderSync
+
+Function for mapping existing keys synchronously
 
 ### receiveFile
 
